@@ -5,6 +5,7 @@ if (typeof Object.create !== 'function') {
         return new F()
     }
 }
+//3-4包含工厂方法的Person对象
 var Person = {
     firstName: 'John',
     lastName: 'Connolly',
@@ -19,7 +20,7 @@ var Person = {
     toString: function () {
         return this.firstName + '' + this.lastName + 'is a' + this.getAge() + 'year-old' + this.gender
     },
-    entend:function(config) {
+    extend:function(config) {
         var tmp = Object.create(this)
         for (var key in config) {
             if(config.hasOwnProperty(key)) {
@@ -29,3 +30,9 @@ var Person = {
         return tmp 
     }
 }
+var bob = Person.extend({
+    firstName: 'Bob',
+    lastName: 'Sabatelli',
+    brithDate: new Date('1969-06-07')
+})
+console.log(bob.toString())
